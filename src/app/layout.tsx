@@ -2,12 +2,12 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { fontSans } from "../styles/fonts";
 import "../styles/globals.css";
-import { ThemeProvider } from './providers'
-import Navbar from '@/components/header/Navbar'
+import { ThemeProvider } from "./providers";
+import Navbar from "@/components/header/Navbar";
 
 export const metadata: Metadata = {
   title: "QR Code",
-  description: "Generate QR Code",
+  description: "Generate QR Code"
 };
 
 export default function RootLayout({
@@ -16,18 +16,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className='min-h-screen' suppressHydrationWarning>
-      <ThemeProvider
-        attribute="class"
-        enableSystem={true}
-        disableTransitionOnChange={true}
-        defaultTheme='system'
-      >
-        <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+    <html lang="fr" className="min-h-screen" suppressHydrationWarning>
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+        <ThemeProvider
+          attribute="class"
+          enableSystem={true}
+          disableTransitionOnChange={true}
+          defaultTheme="system"
+        >
           <Navbar />
           {children}
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
