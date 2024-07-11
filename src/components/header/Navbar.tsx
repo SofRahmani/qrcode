@@ -1,18 +1,10 @@
-import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
-import { CircleUser, Menu, Package2, Search } from "lucide-react";
-import Link from "next/link";
-import { Button } from "../ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger
-} from "../ui/dropdown-menu";
-import { Input } from "../ui/input";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { NAVBAR_ITEMS } from "@/config/navbarItems";
-import { ModeToggle } from '../settings/ToggleDarkMode'
+import { Menu, Package2 } from "lucide-react";
+import Link from "next/link";
+import Github from "../settings/Github";
+import { ModeToggle } from "../settings/ToggleDarkMode";
+import { Button } from "../ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
 export default function Navbar() {
   return (
@@ -22,8 +14,12 @@ export default function Navbar() {
           <Package2 className="size-6" />
           <span className="sr-only">QR Code</span>
         </Link>
-        {NAVBAR_ITEMS.map((item) => (
-          <Link key={item.name} href={item.href} className="text-muted-foreground transition-colors hover:text-foreground">
+        {NAVBAR_ITEMS.map(item => (
+          <Link
+            key={item.name}
+            href={item.href}
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
             {item.name}
           </Link>
         ))}
@@ -41,8 +37,12 @@ export default function Navbar() {
               <Package2 className="size-6" />
               <span className="sr-only">Acme Inc</span>
             </Link>
-            {NAVBAR_ITEMS.map((item) => (
-              <Link key={item.name} href={item.href} className="text-muted-foreground hover:text-foreground">
+            {NAVBAR_ITEMS.map(item => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-muted-foreground hover:text-foreground"
+              >
                 {item.name}
               </Link>
             ))}
@@ -50,7 +50,8 @@ export default function Navbar() {
         </SheetContent>
       </Sheet>
       <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-        <div className="ml-auto sm:flex-initial">
+        <div className="ml-auto flex gap-2 sm:flex-initial">
+          <Github />
           <ModeToggle />
         </div>
       </div>
