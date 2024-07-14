@@ -22,7 +22,7 @@ export default function RootLayout({
           attribute="class"
           enableSystem={true}
           disableTransitionOnChange={true}
-          defaultTheme="system"
+          defaultTheme="light"
         >
           <Navbar />
           {children}
