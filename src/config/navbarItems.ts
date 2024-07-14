@@ -1,10 +1,10 @@
 export const NAVBAR_ITEMS = [
   {
     name: 'Générateur',
-    href: '/',
+    href: '#generator',
   },
   {
     name: 'F.A.Q',
-    href: '/faq',
+    href: '#faq',
   },
 ] as const;
