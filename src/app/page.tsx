@@ -1,4 +1,4 @@
-import FaqSection from '@/components/sections/faq_section/FaqSection'
+import FaqSection from "@/components/sections/faq_section/FaqSection";
 import GeneratorSection from "@/components/sections/generator_section/GeneratorSection";
 
 export default function Home() {

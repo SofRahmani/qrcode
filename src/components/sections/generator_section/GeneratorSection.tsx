@@ -5,11 +5,11 @@ import ResultContainer from "./result/ResultContainer";
 
 export default function GeneratorSection() {
   return (
-    <Container sectionID="generator">
+    <Container sectionID="generator" className='scroll-mt-[100rem]'>
       <div className="flex size-full justify-between gap-10 max-lg:flex-col">
         <div className="flex w-full flex-col items-center justify-center">
           <h1 className={`${title({ size: "xl", color: "yellow" })} text-center`}>
-            QR Code Générator
+            QR Code <br /> Générator
           </h1>
           <div className="hidden flex-col items-center justify-center gap-10 p-8 lg:flex">
             <ResultContainer />

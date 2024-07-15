@@ -1,12 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useQrCodeResultStore } from "@/store/qrCodeResult.store";
+import { useQrCodeFormatStore, useQrCodeResultStore } from "@/store/qrCodeResult.store";
 import { ArrowDownToLine } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Logo from "../../../../../public/QRCode - Logo.svg";
-import Link from 'next/link'
-import { useQrCodeFormatStore } from '@/store/qrCodeResult.store';
 
 export default function ResultContainer() {
   const { result } = useQrCodeResultStore();
@@ -15,14 +14,22 @@ export default function ResultContainer() {
   return (
     <div className="flex size-full flex-col items-center justify-center gap-10 p-8">
       {result ? (
-        <Image src={URL.createObjectURL(result)} alt="QR Code" width={300} height={300} />
+        <Image
+          src={URL.createObjectURL(result)}
+          quality={100}
+          priority
+          alt="QR Code"
+          width={300}
+          height={300}
+        />
       ) : (
         <Image
           src={Logo}
           alt="QR Code placeholder"
           width={300}
           height={300}
-          className="pb-20 opacity-40"
+          quality={90}
+          className="opacity-40 lg:pb-20"
         />
       )}
 
