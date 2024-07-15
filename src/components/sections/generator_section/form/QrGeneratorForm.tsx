@@ -21,18 +21,22 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { qrGeneratorSchema, QrGeneratorSchemaType } from "@/schema/qrGenerator.schema";
-import { useQrCodeResultStore } from "@/store/qrCodeResult.store";
+import { useQrCodeResultStore, useQrCodeFormatStore } from "@/store/qrCodeResult.store";
 import { removeHashtag } from "@/utils/removeHashtag";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoaderCircle } from "lucide-react";
+import { LoaderCircle, RotateCcw } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { formatOptions, sizeOptions } from "./formOptions";
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+
+
 
 export default function QrGeneratorForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { updateResult } = useQrCodeResultStore();
+  const { updateResult, removeResult } = useQrCodeResultStore();
+  const { updateFormat, removeFormat } = useQrCodeFormatStore();
 
   const form = useForm<QrGeneratorSchemaType>({
     resolver: zodResolver(qrGeneratorSchema),
@@ -45,27 +49,24 @@ export default function QrGeneratorForm() {
     }
   });
 
-  const onSubmit = (values: QrGeneratorSchemaType) => {
-    setIsLoading(true);
+  const onSubmit = async (values: QrGeneratorSchemaType) => {
+
     values.color = removeHashtag(values.color);
     values.bgColor = removeHashtag(values.bgColor);
+    updateFormat(values.format);
 
     fetch(
       `https://api.qrserver.com/v1/create-qr-code/?data=${values.data}&size=${values.size}&format=${values.format}&color=${values.color}&bgcolor=${values.bgColor}&ecc=Q&qzone=2`,
       {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(values)
+        method: "GET"
       }
     )
-      .then(response => response.json())
+      .then(response => response.blob())
       .then(data => {
         console.log(data);
         setIsLoading(false);
         toast.success("QR Code généré avec succès");
-        updateResult(data.blob);
+        updateResult(data);
       })
       .catch(error => {
         console.error("Error:", error);
@@ -198,17 +199,33 @@ export default function QrGeneratorForm() {
           </form>
         </Form>
       </CardContent>
-      <CardFooter>
+      <CardFooter className='flex gap-2'>
         <Button
           form="qr-generator-form"
           disabled={isLoading}
+          type='submit'
           variant="default"
           size="lg"
-          className="w-full"
+          className="w-full flex-1"
         >
           Générer un QR Code
           {isLoading ? <LoaderCircle className="ml-2 size-4 animate-spin" /> : null}
         </Button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant={"destructive"} size={"lg"} onClick={() => {
+              form.reset()
+              removeResult()
+              removeFormat()
+              toast.info("Paramètres réinitialisés !")
+            }}>
+              <RotateCcw />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Réinitialiser les paramètres</p>
+          </TooltipContent>
+        </Tooltip>
       </CardFooter>
     </Card>
   );

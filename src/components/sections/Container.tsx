@@ -7,7 +7,7 @@ export default function Container({ sectionID, children }: containerProps) {
   return (
     <section
       id={sectionID}
-      className="flex size-full flex-col items-center justify-center gap-4 p-24"
+      className="flex size-full flex-col items-center justify-center gap-4 lg:p-24"
     >
       {children}
     </section>

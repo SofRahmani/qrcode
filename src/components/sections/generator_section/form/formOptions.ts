@@ -21,7 +21,7 @@ export const sizeOptions = [
   "1000x1000"
 ];
 
-export const formatOptions = ["png", "gif", "jpeg", "jpg", "svg", "eps"];
+export const formatOptions = ["png", "gif", "jpeg", "jpg"];
 
 export const solids = [
   "#ffffff", // blanc
