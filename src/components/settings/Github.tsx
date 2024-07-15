@@ -8,7 +8,7 @@ export default function Github() {
     <>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Link href="https://github.com/SofRahmani" target="_blank">
+          <Link href="https://github.com/SofRahmani/qrcode" target="_blank">
             <Button variant="ghost" size="icon">
               <GithubIcon className="size-[1.2rem]" />
             </Button>

@@ -1,9 +1,10 @@
+import Footer from "@/components/footer/Footer";
+import Navbar from "@/components/header/Navbar";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { fontSans } from "../styles/fonts";
 import "../styles/globals.css";
 import { ThemeProvider } from "./providers";
-import Navbar from "@/components/header/Navbar";
 
 export const metadata: Metadata = {
   title: "QR Code",
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="min-h-screen" suppressHydrationWarning>
+    <html lang="fr" className="min-h-screen !scroll-smooth" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <ThemeProvider
           attribute="class"
@@ -26,6 +27,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
