@@ -39,7 +39,7 @@ export default function FaqSection() {
               Outre le texte, les couleurs, le format et la taille que vous définissez par vous même
               ; les paramètres utilisés par défaut sont le &quot;ecc&quot; sur la valeur
               &quot;Q&quot;, ce qui permet de récupérer environ 25 % des données détruites si le QR
-              Code est endomagé. <br /> <br />
+              Code est endommagé. <br /> <br />
               Le second paramètre est &quot;qzone&quot; sur la valeur &quot;2&quot; qui permet de
               créer une zone de silence suffisante afin d&apos;éviter toute perturbation pour les
               lecteur de QR Code.

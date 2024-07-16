@@ -8,7 +8,7 @@ export default function Footer() {
         <a href="https://github.com/SofRahmani" target="_blank">
           <Button variant="link" size='link'>Sofiane Rahmani</Button>
         </a>{" "}
-        - Tous droits réservées - {new Date().getFullYear()}
+        - Tous droits réservés - {new Date().getFullYear()}
       </p>
     </footer>
   );
