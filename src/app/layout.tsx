@@ -7,8 +7,41 @@ import "../styles/globals.css";
 import { ThemeProvider } from "./providers";
 
 export const metadata: Metadata = {
-  title: "QR Code",
-  description: "Generate QR Code"
+  metadataBase: new URL("https://qrcode.sofiane-rahmani.com/"),
+  title: "QR Code Generator",
+  description:
+    "Générez vos QR Codes facilement et rapidement avec ce générateur de QR Code.",
+  keywords: [
+    "Sofiane Rahmani",
+    "QR Code",
+    "Générateur",
+    "QR Code Generator",
+    "applications web",
+    "applications web modernes",
+    "QR Code couleurs"
+  ],
+
+  icons: {
+    icon: "/favicon.ico"
+  },
+
+  openGraph: {
+    type: "website",
+    url: "https://qrcode.sofiane-rahmani.com/",
+    title: "QR Code Generator",
+    siteName: "Sofiane Rahmani - Projet QR Code",
+    description:
+      "Générez vos QR Codes facilement et rapidement avec ce générateur de QR Code.",
+    images: [
+      {
+        url: "https://qrcode.sofiane-rahmani.com/card.jpg",
+        secureUrl: "./card.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sofiane Rahmani - QR Code Generator's card image",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
